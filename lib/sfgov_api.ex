@@ -30,13 +30,7 @@ defmodule SfgovApi do
     |> Finch.request(FoodTrucks.Finch)
   end
 
-  # The food truck results from Sfgov come with a lot of information.
-  # However, of all the information received, I think that
-  # ["status", "applicant", "latitude", "longitude", "fooditems", "schedule", "address"]
-  # are probably the most relevant. Status to know it's approved (or not),
-  # applicant to know whose food truck, latitude and longitude to put on a map,
-  # fooditems to know what food the truck has, schedule to know when they operate,
-  # and address to know where to find the food truck in a more human way than latitude and longitude.
+  # trims food trucks to just most relevant data
   defp simplify_results(body) do
     body = Jason.decode!(body)
     keys = body |> List.first() |> Map.keys()

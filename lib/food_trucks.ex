@@ -16,6 +16,9 @@ defmodule FoodTrucks do
     |> format_json()
   end
 
+  @doc """
+  Returns food trucks in the food truck cache GenServer.
+  """
   def read_foodtruck_cache() do
     GenServer.call(FoodTruckCache, :read)
   end
