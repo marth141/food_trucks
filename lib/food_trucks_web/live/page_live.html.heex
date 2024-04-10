@@ -29,7 +29,7 @@
     <div id="map" phx-update="ignore" phx-hook="Map" data-food_trucks={@food_trucks}></div>
   </div>
   <div>
-    <%= if @google_maps_api_key == "" do %>
+    <%= if @google_maps_api_key == "" or @google_maps_api_key == nil do %>
       <span>You don't have a google maps API key. Please set one in your environment variables.</span>
     <% else %>
     <% end %>
