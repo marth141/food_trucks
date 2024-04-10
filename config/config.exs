@@ -61,7 +61,7 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-# Setting environment
+# Setting environment and google api key
 config :food_trucks,
   env: Mix.env(),
   google_maps_api_key: System.get_env("GOOGLE_MAPS_API_KEY")
