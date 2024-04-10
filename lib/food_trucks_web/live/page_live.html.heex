@@ -1,0 +1,44 @@
+<!-- # Author: Nathan Casados -->
+<div class="container z-10">
+  <div class="flex justify-between">
+    <div class="text-2xl font-bold">Food Truck Map</div>
+  </div>
+  <style type="text/css">
+    /* Set the size of the div element that contains the map */
+    #map {
+      height: 600px;
+      width: 100%;
+    }
+  </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default">
+  </script>
+  <script
+    src={"https://maps.googleapis.com/maps/api/js?key=#{@google_maps_api_key}&callback=initMap&v=weekly"}
+    defer
+  >
+  </script>
+  <form phx-submit="search-food" class="flex">
+    <input
+      name="food"
+      placeholder="Find Food like Acai, Chinese, or Taco"
+      value={@food_search}
+      class="w-full border rounded-md p-2 my-2 mx-1"
+    />
+  </form>
+  <div id="map-container" class="mb-2">
+    <div id="map" phx-update="ignore" phx-hook="Map" data-food_trucks={@food_trucks}></div>
+  </div>
+  <div>
+    <%= if @google_maps_api_key == "" do %>
+      <span>You don't have a google maps API key. Please set one in your environment variables.</span>
+    <% else %>
+    <% end %>
+  </div>
+</div>
+
+<div class="box z-0"></div>
+<div class="box z-0"></div>
+<div class="box z-0"></div>
+<div class="box z-0"></div>
+<div class="box z-0"></div>
+<div class="box z-0"></div>
